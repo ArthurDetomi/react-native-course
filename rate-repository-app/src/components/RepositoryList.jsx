@@ -5,6 +5,10 @@ import RepositoryItem from "./RepositoryItem";
 const styles = StyleSheet.create({
   separator: {
     height: 10,
+    backgroundColor: "#e1e4e8",
+  },
+  listBackground: {
+    backgroundColor: "#e1e4e8",
   },
 });
 
@@ -60,6 +64,7 @@ const ItemSeparator = () => <View style={styles.separator} />;
 const RepositoryList = () => {
   return (
     <FlatList
+      style={styles.listBackground}
       data={repositories}
       ItemSeparatorComponent={ItemSeparator}
       renderItem={({ item }) => <RepositoryItem repository={item} />}
