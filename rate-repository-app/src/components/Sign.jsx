@@ -1,8 +1,10 @@
 import Text from "./Text";
 
-import { View, TextInput, Pressable } from "react-native";
-
 import { useFormik } from "formik";
+
+import { View, StyleSheet } from "react-native";
+
+import { Button, Input } from "react-native-elements";
 
 const initialValues = {
   username: "",
@@ -20,32 +22,47 @@ const SignIn = () => {
   });
 
   return (
-    <View className="flex-1 justify-center items-center bg-white px-6">
-      <Text className="text-2xl font-bold mb-6">Login</Text>
-
-      <TextInput
-        className="w-full border border-gray-300 rounded-md px-4 py-2 mb-4"
-        placeholder="username"
-        value={formik.values.username}
+    <View style={styles.container}>
+      <Input
+        placeholder="Username"
         onChangeText={formik.handleChange("username")}
+        value={formik.values.username}
+        containerStyle={styles.inputContainer}
       />
-
-      <TextInput
-        className="w-full border border-gray-300 rounded-md px-4 py-2 mb-6"
-        placeholder="password"
-        value={formik.values.password}
+      <Input
+        placeholder="Password"
         onChangeText={formik.handleChange("password")}
+        value={formik.values.password}
         secureTextEntry
+        containerStyle={styles.inputContainer}
       />
-
-      <Pressable
+      <Button
+        title="Sign in"
         onPress={formik.handleSubmit}
-        className="bg-blue-500 px-6 py-3 rounded-md"
-      >
-        <Text className="text-white font-semibold text-center">Entrar</Text>
-      </Pressable>
+        buttonStyle={styles.button}
+        containerStyle={styles.buttonContainer}
+      />
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 16,
+    backgroundColor: "white",
+  },
+  inputContainer: {
+    marginBottom: 20,
+    borderRadius: 5,
+  },
+  buttonContainer: {
+    marginTop: 20,
+    alignSelf: "stretch",
+  },
+  button: {
+    borderRadius: 5,
+    paddingVertical: 10,
+  },
+});
 
 export default SignIn;
