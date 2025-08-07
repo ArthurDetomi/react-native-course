@@ -20,7 +20,8 @@
     "react-native-elements": "^3.4.3",
     "react-native-safe-area-context": "^5.5.2",
     "react-native-web": "~0.19.6",
-    "react-router-native": "^6.30.0"
+    "react-router-native": "^6.30.0",
+    "yup": "^1.7.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

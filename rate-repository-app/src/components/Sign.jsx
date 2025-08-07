@@ -1,15 +1,19 @@
-import Text from "./Text";
-
 import { useFormik } from "formik";
-
 import { View, StyleSheet } from "react-native";
-
 import { Button, Input } from "react-native-elements";
+import * as yup from "yup";
+
+import Text from "./Text";
 
 const initialValues = {
   username: "",
   password: "",
 };
+
+const validationSchema = yup.object().shape({
+  username: yup.string().required("Username is required"),
+  password: yup.string().required("Password is required"),
+});
 
 const SignIn = () => {
   const onSubmit = (values) => {
@@ -18,30 +22,29 @@ const SignIn = () => {
 
   const formik = useFormik({
     initialValues,
+    validationSchema,
     onSubmit,
   });
 
   return (
     <View style={styles.container}>
       <Input
-        placeholder="Username"
+        placeholder="username"
         onChangeText={formik.handleChange("username")}
         value={formik.values.username}
-        containerStyle={styles.inputContainer}
+        inputContainerStyle={[formik.errors.username && styles.errorBorder]}
+        errorMessage={formik.errors.username}
       />
+
       <Input
-        placeholder="Password"
+        placeholder="password"
         onChangeText={formik.handleChange("password")}
         value={formik.values.password}
-        secureTextEntry
-        containerStyle={styles.inputContainer}
+        inputContainerStyle={[formik.errors.password && styles.errorBorder]}
+        errorMessage={formik.errors.password}
       />
-      <Button
-        title="Sign in"
-        onPress={formik.handleSubmit}
-        buttonStyle={styles.button}
-        containerStyle={styles.buttonContainer}
-      />
+
+      <Button title="Sign in" onPress={formik.handleSubmit} />
     </View>
   );
 };
@@ -51,17 +54,10 @@ const styles = StyleSheet.create({
     padding: 16,
     backgroundColor: "white",
   },
-  inputContainer: {
-    marginBottom: 20,
-    borderRadius: 5,
-  },
-  buttonContainer: {
-    marginTop: 20,
-    alignSelf: "stretch",
-  },
-  button: {
-    borderRadius: 5,
-    paddingVertical: 10,
+  errorBorder: {
+    borderColor: "red",
+    borderWidth: 1,
+    borderRadius: 4,
   },
 });
 
