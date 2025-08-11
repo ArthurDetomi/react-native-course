@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const formatCount = (value) => {
+export const formatCount = (value) => {
   return value >= 1000
     ? (value / 1000).toFixed(1).replace(".0", "") + "k"
     : String(value);
@@ -58,7 +58,7 @@ const formatCount = (value) => {
 
 const RepositoryItem = ({ repository }) => {
   return (
-    <View style={styles.container}>
+    <View testID="repositoryItem" style={styles.container}>
       <View style={styles.topSection}>
         <Image
           style={styles.avatar}
