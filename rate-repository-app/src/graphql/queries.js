@@ -13,6 +13,7 @@ export const GET_REPOSITORIES = gql`
           forksCount
           reviewCount
           ratingAverage
+          id
         }
       }
     }
@@ -24,6 +25,23 @@ export const FIND_USER_LOGGED = gql`
     me {
       id
       username
+    }
+  }
+`;
+
+export const FIND_REPOSITORY_BY_ID = gql`
+  query findById($id: ID!) {
+    repository(id: $id) {
+      id
+      ownerAvatarUrl
+      fullName
+      description
+      language
+      stargazersCount
+      forksCount
+      reviewCount
+      ratingAverage
+      url
     }
   }
 `;

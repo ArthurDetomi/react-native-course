@@ -2,6 +2,10 @@ import { View, StyleSheet, Image } from "react-native";
 import Text from "./Text";
 import theme from "../themes";
 
+import { Linking } from "react-native";
+
+import { Button } from "react-native-elements";
+
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#ffffff",
@@ -48,6 +52,10 @@ const styles = StyleSheet.create({
   statItem: {
     alignItems: "center",
   },
+  buttonSection: {
+    flexDirection: "row",
+    justifyContent: "center",
+  },
 });
 
 export const formatCount = (value) => {
@@ -56,7 +64,7 @@ export const formatCount = (value) => {
     : String(value);
 };
 
-const RepositoryItem = ({ repository }) => {
+const RepositoryItem = ({ repository, showOpenInGithubButton = false }) => {
   return (
     <View testID="repositoryItem" style={styles.container}>
       <View style={styles.topSection}>
@@ -93,6 +101,14 @@ const RepositoryItem = ({ repository }) => {
           <Text>Rating</Text>
         </View>
       </View>
+      {showOpenInGithubButton && (
+        <View style={{ marginTop: 10 }}>
+          <Button
+            title="Open in GitHub"
+            onPress={() => Linking.openURL(repository.url)}
+          />
+        </View>
+      )}
     </View>
   );
 };
