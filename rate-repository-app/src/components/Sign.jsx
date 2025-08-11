@@ -21,12 +21,7 @@ const SignIn = () => {
   const onSubmit = async (values) => {
     const { username, password } = values;
 
-    try {
-      const { data } = await signIn({ username, password });
-      console.log(data);
-    } catch (e) {
-      console.log(e);
-    }
+    await signIn({ username, password });
   };
 
   const formik = useFormik({
