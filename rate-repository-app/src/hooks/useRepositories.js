@@ -34,16 +34,12 @@ const useRepositories = ({ order }) => {
     },
   });
 
-  const response = {
+  return {
     repositories: data?.repositories,
     loading,
     refetch: (newOrder) => refetch(getVariables(newOrder)),
     error,
   };
-
-  console.log("response = ", response);
-
-  return response;
 };
 
 export default useRepositories;
