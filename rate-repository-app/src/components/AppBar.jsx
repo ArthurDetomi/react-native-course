@@ -18,6 +18,8 @@ const styles = StyleSheet.create({
 const AppBar = () => {
   const { signOut, data, loading } = useSignOut();
 
+  const isLoggedIn = Boolean(data?.me);
+
   if (loading) {
     return (
       <View style={styles.container}>
@@ -43,7 +45,7 @@ const AppBar = () => {
           </Link>
         </Pressable>
 
-        {data?.me && (
+        {isLoggedIn && (
           <Pressable>
             <Link to="/createReview">
               <Text
@@ -57,7 +59,7 @@ const AppBar = () => {
           </Pressable>
         )}
 
-        {data?.me ? (
+        {isLoggedIn ? (
           <Pressable onPress={() => signOut()}>
             <Text
               style={{ color: "white" }}
@@ -76,6 +78,20 @@ const AppBar = () => {
                 fontSize="subheading"
               >
                 Sign in
+              </Text>
+            </Link>
+          </Pressable>
+        )}
+
+        {!isLoggedIn && (
+          <Pressable>
+            <Link to="/signup">
+              <Text
+                style={{ color: "white" }}
+                fontWeight="bold"
+                fontSize="subheading"
+              >
+                Sign up
               </Text>
             </Link>
           </Pressable>

@@ -5,9 +5,10 @@ import Text from "./Text";
 import AppBar from "./AppBar";
 
 import RepositoryList from "./RepositoryList";
-import SignIn from "./Sign";
+import SignIn from "./SignIn";
 import SingleRepository from "./SingleRepository";
 import ReviewForm from "./ReviewForm";
+import SignUp from "./SignUp";
 
 const styles = StyleSheet.create({
   container: {
@@ -28,6 +29,7 @@ const Main = () => {
         <Route path="/login" element={<SignIn />} />
         <Route path="*" element={<Navigate to="/" replace />} />
         <Route path="/createReview" element={<ReviewForm />} />
+        <Route path="/signup" element={<SignUp />} />
       </Routes>
     </View>
   );
