@@ -9,9 +9,12 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: Constants.statusBarHeight,
     backgroundColor: "#24292e",
-    padding: 15,
+    padding: 5,
     flexDirection: "row",
     gap: 8,
+  },
+  navLink: {
+    padding: 10,
   },
 });
 
@@ -33,7 +36,7 @@ const AppBar = () => {
   return (
     <View style={styles.container}>
       <ScrollView horizontal={true}>
-        <Pressable>
+        <Pressable style={styles.navLink}>
           <Link to="/">
             <Text
               style={{ color: "white" }}
@@ -46,7 +49,7 @@ const AppBar = () => {
         </Pressable>
 
         {isLoggedIn && (
-          <Pressable>
+          <Pressable style={styles.navLink}>
             <Link to="/createReview">
               <Text
                 style={{ color: "white" }}
@@ -60,7 +63,7 @@ const AppBar = () => {
         )}
 
         {isLoggedIn ? (
-          <Pressable onPress={() => signOut()}>
+          <Pressable onPress={() => signOut()} style={styles.navLink}>
             <Text
               style={{ color: "white" }}
               fontWeight="bold"
@@ -70,7 +73,7 @@ const AppBar = () => {
             </Text>
           </Pressable>
         ) : (
-          <Pressable>
+          <Pressable style={styles.navLink}>
             <Link to="/login">
               <Text
                 style={{ color: "white" }}
@@ -84,7 +87,7 @@ const AppBar = () => {
         )}
 
         {!isLoggedIn && (
-          <Pressable>
+          <Pressable style={styles.navLink}>
             <Link to="/signup">
               <Text
                 style={{ color: "white" }}

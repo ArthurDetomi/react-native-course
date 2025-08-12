@@ -22,7 +22,6 @@ const Main = () => {
   return (
     <View style={styles.container}>
       <AppBar />
-      <Text>Rate Repository Application</Text>
       <Routes>
         <Route path="/" element={<RepositoryList />} />
         <Route path="/:id" element={<SingleRepository />} />
