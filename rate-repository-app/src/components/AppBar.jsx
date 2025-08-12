@@ -43,6 +43,20 @@ const AppBar = () => {
           </Link>
         </Pressable>
 
+        {data?.me && (
+          <Pressable>
+            <Link to="/createReview">
+              <Text
+                style={{ color: "white" }}
+                fontWeight="bold"
+                fontSize="subheading"
+              >
+                Create a review
+              </Text>
+            </Link>
+          </Pressable>
+        )}
+
         {data?.me ? (
           <Pressable onPress={() => signOut()}>
             <Text
